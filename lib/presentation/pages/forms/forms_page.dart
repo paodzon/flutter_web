@@ -7,8 +7,9 @@ class FormsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Layout(
-        contentPage: Container(
-      child: Text('Form Page'),
-    ));
+      contentPage: Container(
+        child: Text('Form Page'),
+      ),
+    );
   }
 }
