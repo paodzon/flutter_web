@@ -22,7 +22,7 @@ class SideMenu extends StatelessWidget {
               tileColor: Color(0xffF5F5F5),
               leading: Icon(Icons.person),
               title: Text('John Doe'),
-              subtitle: Text('Ubx Admin'),
+              subtitle: Text('Placeholder text'),
               trailing: Icon(Icons.arrow_drop_down_sharp),
             ),
           ),
