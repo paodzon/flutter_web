@@ -14,6 +14,12 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        checkboxTheme: CheckboxThemeData(
+          side: MaterialStateBorderSide.resolveWith(
+              (_) => const BorderSide(width: 1, color: Colors.grey)),
+          fillColor: MaterialStateProperty.all(Colors.orange),
+          checkColor: MaterialStateProperty.all(Colors.white),
+        ),
       ),
       initialRoute: RoutesList.applications,
       getPages: Routes.route,

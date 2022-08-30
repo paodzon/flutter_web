@@ -38,12 +38,15 @@ class SideMenu extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: const [
-                  Icon(Icons.add),
+                  Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  ),
                   Flexible(
                     child: Center(
                       child: Text(
                         'Build Form',
-                        style: TextStyle(fontSize: 16),
+                        style: TextStyle(fontSize: 16, color: Colors.white),
                       ),
                     ),
                   )
