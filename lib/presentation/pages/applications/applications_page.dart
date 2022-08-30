@@ -13,18 +13,21 @@ class ApplicationsPage extends StatefulWidget {
 class _ApplicationsPageState extends State<ApplicationsPage> {
   late TextEditingController _nameController;
   late TextEditingController _ageController;
-
+  late TextEditingController _searchController;
+  var search = '';
   @override
   void initState() {
     super.initState();
     _nameController = TextEditingController();
     _ageController = TextEditingController();
+    _searchController = TextEditingController();
   }
 
   @override
   void dispose() {
     _nameController.dispose();
     _ageController.dispose();
+    _searchController.dispose();
     super.dispose();
   }
 
@@ -59,8 +62,13 @@ class _ApplicationsPageState extends State<ApplicationsPage> {
   }
 
   Stream<List<User>> readUsers() {
-    return FirebaseFirestore.instance.collection('users').snapshots().map(
-        (snapshot) =>
+    return FirebaseFirestore.instance
+        .collection('users')
+        .orderBy('name')
+        .startAt([search])
+        .endAt(['$search\uf8ff'])
+        .snapshots()
+        .map((snapshot) =>
             snapshot.docs.map((doc) => User.fromJson(doc.data())).toList());
   }
 
@@ -103,6 +111,21 @@ class _ApplicationsPageState extends State<ApplicationsPage> {
         ),
         ElevatedButton(
             onPressed: () => submitData(), child: const Text('Submit')),
+        TextField(
+          controller: _searchController,
+          onChanged: (value) => setState(() {
+            if (value.isEmpty) {
+              search = '';
+            } else {
+              search = value;
+            }
+            debugPrint(search);
+          }),
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Search',
+          ),
+        ),
         StreamBuilder<List<User>>(
           stream: readUsers(),
           builder: (context, snapshot) {
