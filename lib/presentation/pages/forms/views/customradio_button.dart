@@ -24,7 +24,7 @@ class _CustomRadioButtonState extends State<CustomRadioButton> {
           });
         },
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 20),
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 20),
           child: Text(
             text,
             style: TextStyle(

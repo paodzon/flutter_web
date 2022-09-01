@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../form.dart';
+import '../../forms/form.dart';
 
 class DataTableDemo extends StatefulWidget {
   DataTableDemo() : super();
@@ -26,9 +26,9 @@ class DataTableDemoState extends State<DataTableDemo> {
   onSortColum(int columnIndex, bool ascending) {
     if (columnIndex == 0) {
       if (ascending) {
-        forms.sort((a, b) => a.file_name.compareTo(b.file_name));
+        forms.sort((a, b) => a.fileName.compareTo(b.fileName));
       } else {
-        forms.sort((a, b) => b.file_name.compareTo(a.file_name));
+        forms.sort((a, b) => b.fileName.compareTo(a.fileName));
       }
     }
   }
@@ -66,7 +66,6 @@ class DataTableDemoState extends State<DataTableDemo> {
           DataColumn(
               label: const Text("File Name"),
               numeric: false,
-              tooltip: "This is First Name",
               onSort: (columnIndex, ascending) {
                 setState(() {
                   sort = !sort;
@@ -76,7 +75,6 @@ class DataTableDemoState extends State<DataTableDemo> {
           const DataColumn(
             label: Text("Date Created"),
             numeric: false,
-            tooltip: "This is Last Name",
           ),
         ],
         rows: forms
@@ -89,13 +87,13 @@ class DataTableDemoState extends State<DataTableDemo> {
                   },
                   cells: [
                     DataCell(
-                      Text(form.file_name),
+                      Text(form.fileName),
                       onTap: () {
-                        print('Selected ${form.file_name}');
+                        print('Selected ${form.fileName}');
                       },
                     ),
                     DataCell(
-                      Text(form.date_created),
+                      Text(form.dateCreated),
                     ),
                   ]),
             )

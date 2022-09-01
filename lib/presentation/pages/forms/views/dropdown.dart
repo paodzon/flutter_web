@@ -1,15 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web/app/config/app_colors.dart';
 
 class Dropdown extends StatefulWidget {
-  const Dropdown({Key? key}) : super(key: key);
+  final List<String> values;
+  final String? selected;
+
+  const Dropdown({Key? key, required this.values, required this.selected})
+      : super(key: key);
 
   @override
   State<Dropdown> createState() => _DropdownState();
 }
 
 class _DropdownState extends State<Dropdown> {
-  String dropdownValue = 'One';
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,20 +22,14 @@ class _DropdownState extends State<Dropdown> {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(4),
-          border: Border.all(color: const Color(0xffB7B9C0), width: 0)),
+          border: Border.all(color: AppColors.gray200, width: 0)),
       child: DropdownButton<String>(
         isExpanded: true,
-        value: dropdownValue,
-        // icon: const Icon(Icons.arrow_drop_down),
+        value: widget.selected ?? 'Type',
         elevation: 16,
         underline: DropdownButtonHideUnderline(child: Container()),
-        onChanged: (String? newValue) {
-          setState(() {
-            dropdownValue = newValue!;
-          });
-        },
-        items: <String>['One', 'Two', 'Free', 'Four']
-            .map<DropdownMenuItem<String>>((String value) {
+        onChanged: (String? newValue) {},
+        items: widget.values.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,
             child: Text(value),

@@ -119,7 +119,6 @@ class _ApplicationsPageState extends State<ApplicationsPage> {
             } else {
               search = value;
             }
-            debugPrint(search);
           }),
           decoration: const InputDecoration(
             border: OutlineInputBorder(),

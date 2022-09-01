@@ -12,24 +12,26 @@ class Layout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: const SideMenu(),
-      body: Column(
-        children: [
-          const Expanded(flex: 0, child: Header()),
-          Expanded(
-            flex: 6,
-            child: Row(children: [
-              if (Responsive.isDesktop(context)) const SideMenu(),
-              Container(
-                width: Responsive.isDesktop(context)
-                    ? MediaQuery.of(context).size.width - 250
-                    : MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.height,
-                color: const Color(0xffF5F5F5),
-                child: contentPage,
-              ),
-            ]),
-          )
-        ],
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Header(),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  if (Responsive.isDesktop(context)) const SideMenu(),
+                  Container(
+                    width: Responsive.isDesktop(context)
+                        ? MediaQuery.of(context).size.width - 250
+                        : MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    color: const Color(0xffF5F5F5),
+                    child: SingleChildScrollView(child: contentPage),
+                  ),
+                ])
+          ],
+        ),
       ),
     );
   }

@@ -61,7 +61,6 @@ class _FormsTableState extends State<FormsTable> {
     var checkList = selected.where((e) => e == true).toList();
     var selectedItems = [];
 
-    // debugPrint(checkList.length.toString());
     final double width = MediaQuery.of(context).size.width;
     return Container(
       color: Colors.white,
@@ -121,20 +120,22 @@ class _FormsTableState extends State<FormsTable> {
                       cells: <DataCell>[
                         DataCell(Text(item['file_name'])),
                         DataCell(Text(item['date_created'])),
-                        DataCell(Row(
-                          children: [
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: Text('Preview'),
-                              style: ElevatedButton.styleFrom(),
-                            ),
-                            const SizedBox(width: 20),
-                            ElevatedButton(
-                              onPressed: () {},
-                              child: Text('Edit'),
-                            )
-                          ],
-                        ))
+                        DataCell(
+                          Row(
+                            children: [
+                              ElevatedButton(
+                                onPressed: () {},
+                                child: Text('Preview'),
+                                style: ElevatedButton.styleFrom(),
+                              ),
+                              const SizedBox(width: 20),
+                              ElevatedButton(
+                                onPressed: () {},
+                                child: Text('Edit'),
+                              )
+                            ],
+                          ),
+                        )
                       ]))
               .toList(),
         ),

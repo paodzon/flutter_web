@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web/app/config/app_colors.dart';
 import 'package:flutter_web/app/routes/routes.dart';
 import 'package:flutter_web/app/routes/routes_list.dart';
 import 'package:get/route_manager.dart';
@@ -16,8 +17,8 @@ class App extends StatelessWidget {
         primarySwatch: Colors.blue,
         checkboxTheme: CheckboxThemeData(
           side: MaterialStateBorderSide.resolveWith(
-              (_) => const BorderSide(width: 1, color: Colors.grey)),
-          fillColor: MaterialStateProperty.all(Colors.orange),
+              (_) => BorderSide(width: 1, color: AppColors.gray300)),
+          fillColor: MaterialStateProperty.all(AppColors.orange800),
           checkColor: MaterialStateProperty.all(Colors.white),
         ),
       ),

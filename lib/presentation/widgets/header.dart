@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web/app/config/app_colors.dart';
 
 class Header extends StatelessWidget {
   const Header({Key? key}) : super(key: key);
@@ -11,7 +12,7 @@ class Header extends StatelessWidget {
           width: 250,
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           decoration:
-              BoxDecoration(border: Border.all(color: const Color(0xffEEEEEE))),
+              BoxDecoration(border: Border.all(color: AppColors.gray50)),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -30,7 +31,7 @@ class Header extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [
                 Text(
-                  'My Forms',
+                  '',
                   style: TextStyle(fontSize: 18),
                 ),
                 Icon(Icons.notifications_none_outlined)

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web/presentation/pages/forms/views/customradio_button.dart';
+import 'package:flutter_web/app/config/app_colors.dart';
 import 'package:flutter_web/presentation/pages/forms/views/dropdown.dart';
-import 'package:flutter_web/presentation/pages/forms/views/forms_table.dart';
-import 'package:flutter_web/presentation/pages/forms/views/sample.dart';
+import 'package:flutter_web/presentation/pages/forms/views/form_table.dart';
+
 import 'package:flutter_web/presentation/widgets/layout.dart';
 
 class FormsPage extends StatelessWidget {
@@ -10,34 +10,53 @@ class FormsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List<String> statusDropdown = ['Status', 'Published', 'Draft', 'Archived'];
+    List<String> typeDropdown = ['Type', 'Type2'];
     return Layout(
-        contentPage: Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24),
-      width: double.infinity,
-      child: Column(children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      contentPage: Container(
+        color: Colors.white,
+        margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+        padding: const EdgeInsets.all(24),
+        width: double.infinity,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const Text(
+              'Forms',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+            ),
+            const SizedBox(height: 32),
             Row(
-              children: const [
-                Dropdown(),
-                SizedBox(width: 24),
-                Dropdown(),
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    Dropdown(
+                      values: typeDropdown,
+                      selected: 'Type',
+                    ),
+                    const SizedBox(width: 24),
+                    Dropdown(
+                      values: statusDropdown,
+                      selected: 'Status',
+                    ),
+                  ],
+                ),
+                ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(Icons.add),
+                  label: const Text('Build Form'),
+                  style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(12),
+                      primary: AppColors.orange800),
+                )
               ],
             ),
-            OutlinedButton(
-                onPressed: () {},
-                child: Row(
-                  children: const [Text('Export'), Icon(Icons.arrow_drop_down)],
-                ))
+            const SizedBox(height: 32),
+            FormTable()
           ],
         ),
-        Container(
-          color: Colors.white,
-          child: CustomRadioButton(),
-        ),
-        FormsTable()
-      ]),
-    ));
+      ),
+    );
   }
 }
