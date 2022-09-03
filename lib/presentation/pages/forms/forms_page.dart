@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web/app/config/app_colors.dart';
+import 'package:flutter_web/presentation/controllers/forms_controller.dart';
 import 'package:flutter_web/presentation/pages/forms/views/dropdown.dart';
 import 'package:flutter_web/presentation/pages/forms/views/form_table.dart';
-
+import 'package:flutter_web/presentation/pages/forms/views/header.dart';
 import 'package:flutter_web/presentation/widgets/layout.dart';
+import 'package:get/get.dart';
 
-class FormsPage extends StatelessWidget {
+class FormsPage extends GetView<FormsController> {
   const FormsPage({Key? key}) : super(key: key);
 
   @override
@@ -13,6 +15,7 @@ class FormsPage extends StatelessWidget {
     List<String> statusDropdown = ['Status', 'Published', 'Draft', 'Archived'];
     List<String> typeDropdown = ['Type', 'Type2'];
     return Layout(
+      header: const Header(),
       contentPage: Container(
         color: Colors.white,
         margin: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
@@ -31,14 +34,18 @@ class FormsPage extends StatelessWidget {
               children: [
                 Row(
                   children: [
-                    Dropdown(
-                      values: typeDropdown,
-                      selected: 'Type',
-                    ),
+                    Obx(() => Dropdown(
+                          selectValue: (_) => controller.filterByType(_),
+                          values: typeDropdown,
+                          selected: controller.typeValue.value,
+                        )),
                     const SizedBox(width: 24),
-                    Dropdown(
-                      values: statusDropdown,
-                      selected: 'Status',
+                    Obx(
+                      () => Dropdown(
+                        selectValue: (_) => controller.filterByStatus(_),
+                        values: statusDropdown,
+                        selected: controller.statusValue.value,
+                      ),
                     ),
                   ],
                 ),

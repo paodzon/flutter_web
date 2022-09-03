@@ -14,7 +14,6 @@ class App extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.blue,
         checkboxTheme: CheckboxThemeData(
           side: MaterialStateBorderSide.resolveWith(
               (_) => BorderSide(width: 1, color: AppColors.gray300)),

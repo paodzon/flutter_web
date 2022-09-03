@@ -6,6 +6,6 @@ class SettingsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Layout(contentPage: Text('Settings'));
+    return Layout(header: Container(), contentPage: Text('Settings'));
   }
 }

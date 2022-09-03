@@ -4,8 +4,13 @@ import 'package:flutter_web/app/config/app_colors.dart';
 class Dropdown extends StatefulWidget {
   final List<String> values;
   final String? selected;
+  final Function selectValue;
 
-  const Dropdown({Key? key, required this.values, required this.selected})
+  const Dropdown(
+      {Key? key,
+      required this.values,
+      required this.selected,
+      required this.selectValue})
       : super(key: key);
 
   @override
@@ -25,10 +30,12 @@ class _DropdownState extends State<Dropdown> {
           border: Border.all(color: AppColors.gray200, width: 0)),
       child: DropdownButton<String>(
         isExpanded: true,
-        value: widget.selected ?? 'Type',
+        value: widget.selected,
         elevation: 16,
         underline: DropdownButtonHideUnderline(child: Container()),
-        onChanged: (String? newValue) {},
+        onChanged: (String? newValue) {
+          widget.selectValue(newValue);
+        },
         items: widget.values.map<DropdownMenuItem<String>>((String value) {
           return DropdownMenuItem<String>(
             value: value,

@@ -44,6 +44,7 @@ dependencies:
   firebase_auth: ^3.7.0
   flutter_svg: ^1.1.4
   number_paginator: ^0.0.3
+  json_annotation:
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -14,6 +14,7 @@ class _WorkflowsPageState extends State<WorkflowsPage> {
   @override
   Widget build(BuildContext context) {
     return Layout(
+      header: Container(),
       contentPage: Container(
         margin: const EdgeInsets.all(50),
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [

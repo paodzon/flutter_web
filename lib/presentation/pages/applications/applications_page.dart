@@ -93,59 +93,60 @@ class _ApplicationsPageState extends State<ApplicationsPage> {
   @override
   Widget build(BuildContext context) {
     return Layout(
+        header: Container(),
         contentPage: Column(
-      children: [
-        TextField(
-          controller: _nameController,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Name',
-          ),
-        ),
-        TextField(
-          controller: _ageController,
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Age',
-          ),
-        ),
-        ElevatedButton(
-            onPressed: () => submitData(), child: const Text('Submit')),
-        TextField(
-          controller: _searchController,
-          onChanged: (value) => setState(() {
-            if (value.isEmpty) {
-              search = '';
-            } else {
-              search = value;
-            }
-          }),
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-            labelText: 'Search',
-          ),
-        ),
-        StreamBuilder<List<User>>(
-          stream: readUsers(),
-          builder: (context, snapshot) {
-            if (snapshot.hasError) {
-              return Text('Something went wrong ${snapshot.error}');
-            }
-            if (snapshot.hasData) {
-              final users = snapshot.data!;
+          children: [
+            TextField(
+              controller: _nameController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Name',
+              ),
+            ),
+            TextField(
+              controller: _ageController,
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Age',
+              ),
+            ),
+            ElevatedButton(
+                onPressed: () => submitData(), child: const Text('Submit')),
+            TextField(
+              controller: _searchController,
+              onChanged: (value) => setState(() {
+                if (value.isEmpty) {
+                  search = '';
+                } else {
+                  search = value;
+                }
+              }),
+              decoration: const InputDecoration(
+                border: OutlineInputBorder(),
+                labelText: 'Search',
+              ),
+            ),
+            StreamBuilder<List<User>>(
+              stream: readUsers(),
+              builder: (context, snapshot) {
+                if (snapshot.hasError) {
+                  return Text('Something went wrong ${snapshot.error}');
+                }
+                if (snapshot.hasData) {
+                  final users = snapshot.data!;
 
-              return ListView(
-                shrinkWrap: true,
-                children: users.map(buildUser).toList(),
-              );
-            } else {
-              return Center(
-                child: CircularProgressIndicator(),
-              );
-            }
-          },
-        ),
-      ],
-    ));
+                  return ListView(
+                    shrinkWrap: true,
+                    children: users.map(buildUser).toList(),
+                  );
+                } else {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+              },
+            ),
+          ],
+        ));
   }
 }

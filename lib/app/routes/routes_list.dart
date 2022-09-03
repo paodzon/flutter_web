@@ -1,4 +1,5 @@
 import 'package:flutter_web/app/routes/routes.dart';
+import 'package:flutter_web/presentation/bindings/forms_bindings.dart';
 import 'package:flutter_web/presentation/pages/applications/applications_page.dart';
 import 'package:flutter_web/presentation/pages/forms/forms_page.dart';
 import 'package:flutter_web/presentation/pages/settings/settings_page.dart';
@@ -15,6 +16,7 @@ class Routes {
     GetPage(
         name: RoutesList.forms,
         page: () => const FormsPage(),
+        binding: FormsBindings(),
         transition: Transition.noTransition),
     GetPage(
         name: RoutesList.workflows,
