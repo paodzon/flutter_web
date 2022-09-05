@@ -8,38 +8,32 @@ class Header extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      height: 64,
-      padding: const EdgeInsets.symmetric(horizontal: 30),
+      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Expanded(
-            flex: 1,
-            child: Row(children: [
-              InkWell(
-                  onTap: () {},
-                  child: Icon(
+          Row(
+            children: [
+              IconButton(
+                  onPressed: () {},
+                  icon: const Icon(
                     Icons.arrow_back_ios,
                     size: 20,
-                    color: AppColors.gray700,
                   )),
-              const SizedBox(width: 10),
-              Expanded(
-                  child: Container(
-                      color: AppColors.gray50,
-                      width: 270,
-                      height: 32,
-                      child: const TextField(
-                        decoration: InputDecoration(
-                            suffixIcon: Icon(Icons.search),
-                            contentPadding: EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 10),
-                            border: OutlineInputBorder(),
-                            hintText: 'Search'),
-                      )))
-            ]),
+              Container(
+                  color: AppColors.gray50,
+                  width: 270,
+                  height: 32,
+                  child: const TextField(
+                    decoration: InputDecoration(
+                        suffixIcon: Icon(Icons.search),
+                        contentPadding:
+                            EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                        border: OutlineInputBorder(),
+                        hintText: 'Search'),
+                  )),
+            ],
           ),
-          const Spacer(flex: 3),
           Icon(
             Icons.notifications_outlined,
             color: AppColors.gray400,

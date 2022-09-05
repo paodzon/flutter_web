@@ -46,6 +46,7 @@ class FormsController extends GetxController {
 
   deleteSelectedForm(id) async {
     formData.removeWhere((e) => e.id == id);
+    selectedForms.remove(id);
   }
 
   setCurrentPage(int num) async {
